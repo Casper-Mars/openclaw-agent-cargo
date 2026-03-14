@@ -14,7 +14,7 @@ OpenClaw Agent 导入/导出工具 - 用于备份和恢复 OpenClaw Agent 配置
 ### 从源码编译
 
 ```bash
-git clone https://github.com/yourusername/openclaw-agent-cargo.git
+git clone https://github.com/Casper-Mars/openclaw-agent-cargo.git
 cd openclaw-agent-cargo
 go build -o openclaw-agent-cargo
 ```
@@ -22,7 +22,7 @@ go build -o openclaw-agent-cargo
 ### 使用 Go Install
 
 ```bash
-go install github.com/yourusername/openclaw-agent-cargo@latest
+go install github.com/Casper-Mars/openclaw-agent-cargo@latest
 ```
 
 ## 使用方法
