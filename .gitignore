@@ -1,0 +1,39 @@
+# Binaries
+openclaw-agent-cargo
+openclaw-agent-cargo-*
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build output
+dist/
+build/
+
+# Backup files
+*.tar.gz
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
