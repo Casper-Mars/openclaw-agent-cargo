@@ -51,8 +51,9 @@ type AgentConfig struct {
 }
 
 var (
-	version = "1.0.0"
-	verbose = false
+	version            = "1.0.0"
+	verbose            = false
+	includeSessions    = true
 )
 
 func main() {
@@ -81,6 +82,7 @@ func main() {
 	exportCmd.Flags().StringP("agent", "a", "", "要导出的 Agent ID (必需)")
 	exportCmd.Flags().StringP("output", "o", "", "输出文件路径 (默认：./<agent-id>-agent.tar.gz)")
 	exportCmd.Flags().StringP("openclaw-dir", "d", "", "OpenClaw 目录 (默认：~/.openclaw)")
+	exportCmd.Flags().BoolVar(&includeSessions, "include-sessions", true, "导出时是否包含 sessions (默认：true)")
 	exportCmd.MarkFlagRequired("agent")
 
 	// import 命令标志
@@ -208,6 +210,12 @@ func runExport(cmd *cobra.Command, args []string) error {
 		// 跳过系统文件
 		if shouldSkip(d.Name()) {
 			return nil
+		}
+
+		// 如果不需要 sessions，跳过 sessions 目录
+		if !includeSessions && d.IsDir() && d.Name() == "sessions" {
+			log("  ⊘ 跳过 sessions/ (--include-sessions=false)")
+			return filepath.SkipDir
 		}
 
 		// 跳过目录本身
